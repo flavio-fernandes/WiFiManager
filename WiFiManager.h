@@ -283,6 +283,10 @@ class WiFiManager
     // helper to get saved password, if persistent get stored, else get current if connected
     String        getWiFiSSID(bool persistent = false);
 
+    // hacking around issue 1004
+    // https://github.com/tzapu/WiFiManager/issues/1004
+    String        getPassword();
+
     // debug output the softap config
     void          debugSoftAPConfig();
     // debug output platform info and versioning

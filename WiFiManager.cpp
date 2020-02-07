@@ -2469,6 +2469,19 @@ String WiFiManager::getWiFiPass(bool persistent){
   return WiFi_psk(persistent);
 } 
 
+// hacking around issue 1004
+// https://github.com/tzapu/WiFiManager/issues/1004
+String WiFiManager::getPassword() {
+  if (_pass == "") {
+    DEBUG_WM(F("Reading Password"));
+    _pass = WiFi.psk();
+    DEBUG_WM(F("Password:"), _pass.c_str());
+    DEBUG_WM(_pass);
+  }
+  return _pass;
+}
+
+
 // DEBUG
 // @todo fix DEBUG_WM(0,0);
 template <typename Generic>
